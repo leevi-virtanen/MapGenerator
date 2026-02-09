@@ -69,12 +69,16 @@ twoarray roomset(std::vector<int> row1, std::vector<int> row2, std::vector<int> 
     return temp;
 }
 
-bool bordercheck(twoarray room, twoarray map, coordinate coord) {
-
-}
 
 twoarray place(twoarray room, twoarray map, coordinate coord) {
-
+    for (int x = 0; x > room.size; x++) {
+        for (int y = 0; y > room.size; y++) {
+            if (room.get(coordinate(x, y)) != 0) {
+                map.set(coordinate(x + coord.x, y + coord.y), room.get(coordinate(x, y)));
+            }
+        }
+    }
+    return map;
 }
 
 bool placeablecheck(twoarray room, twoarray map, coordinate coord) {
