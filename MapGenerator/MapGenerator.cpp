@@ -70,7 +70,7 @@ twoarray roomset(std::vector<int> row1, std::vector<int> row2, std::vector<int> 
 }
 
 
-twoarray place(twoarray room, twoarray map, coordinate coord) {
+void place(twoarray& room, twoarray& map, coordinate coord) {
     for (int x = 0; x > room.size; x++) {
         for (int y = 0; y > room.size; y++) {
             if (room.get(coordinate(x, y)) != 0) {
@@ -78,7 +78,7 @@ twoarray place(twoarray room, twoarray map, coordinate coord) {
             }
         }
     }
-    return map;
+
 }
 
 bool placeablecheck(twoarray room, twoarray map, coordinate coord) {
