@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -47,6 +46,7 @@ public:
     bool set(coordinate coord, int input) {
         if (coord.x > size || coord.y > size || coord.x < 0 || coord.y < 0) return false;
         array[size * coord.x + coord.y] = input;
+        return true;
     }
 
 };
@@ -71,8 +71,8 @@ twoarray roomset(std::vector<int> row1, std::vector<int> row2, std::vector<int> 
 
 
 void place(twoarray& room, twoarray& map, coordinate coord) {
-    for (int x = 0; x > room.size; x++) {
-        for (int y = 0; y > room.size; y++) {
+    for (int x = 0; x < room.size; x++) {
+        for (int y = 0; y < room.size; y++) {
             if (room.get(coordinate(x, y)) != 0) {
                 map.set(coordinate(x + coord.x, y + coord.y), room.get(coordinate(x, y)));
             }
@@ -118,7 +118,6 @@ bool placeablecheck(twoarray room, twoarray map, coordinate coord) {
         return true;
     }
     else return false;
-
 }
 
 void printtwoarray(twoarray room) {
@@ -166,6 +165,20 @@ twoarray rotate(twoarray room, int times) {
     return temp;
 }
 
+void fullPlaceAlgorithm(twoarray& room, twoarray& map, coordinate coord) {
+    for (int x = 0; x < 3; x++) {
+        for (int y = 0; y < 3; y++) {
+            for (int z = 0; z < 3; y++) {
+                coordinate newCoord = coordinate(coord.x + x - 1, coord.y + y - 1);
+                twoarray currentRoom = rotate(room,z);
+                if (placeablecheck(currentRoom, map, newCoord)) {
+                    place(currentRoom, map, newCoord);
+                }
+            }
+        }
+    }
+}
+
 
 int main()
 {
@@ -176,11 +189,16 @@ int main()
     }
 
     rooms[0] = roomset({ 1,1,1 }, { 2,0,0 }, { 0,0,0 });
-    printtwoarray(rooms[0]);
-    printtwoarray((rotate(rooms[0],2)));
-    
+    rooms[1] = roomset({ 1,1,1 }, { 2,1,1 }, { 0,0,0 });
+    rooms[2] = roomset({ 1,1,0 }, { 2,1,0 }, { 0,0,0 });
+    rooms[3] = roomset({ 1,1,3 }, { 0,0,0 }, { 0,0,0 });
+    rooms[4] = roomset({ 1,1,1 }, { 1,1,1 }, { 1,1,3 });
+    rooms[5] = roomset({ 5,1,1 }, { 1,1,3 }, { 0,0,0 });
 
-    std::cout << placeablecheck(twoarray(), map, coordinate(3, 5));
+    coordinate pointer = coordinate(0, 0);
+    while (pointer.x < map.size && pointer.y < map.size) {
+
+    }
 
 }
 
