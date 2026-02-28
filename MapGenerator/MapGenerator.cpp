@@ -13,10 +13,7 @@ class coordinate {
 public:
     int x;
     int y;
-    coordinate(int coordx, int coordy) {
-        x = coordx;
-        y = coordy;
-    }
+    coordinate(int coordx, int coordy) : x(coordx), y(coordy) {}
 };
 
 class PlacedRoom {
@@ -98,7 +95,7 @@ void place(twoarray& room, twoarray& map, coordinate coord) {
 
 }
 
-bool placeablecheck(twoarray room, twoarray map, coordinate coord) {
+bool placeablecheck(twoarray& room, twoarray& map, coordinate& coord) {
     int correctdoorcounter = 0;
 
     for (int x = 0; x < room.size; x++) {
