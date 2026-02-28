@@ -84,7 +84,7 @@ Unconditionally writes a room's data into the map at the given coordinate.
 
 * **Logic**: It iterates through the room's matrix and copies any non-zero value directly onto the map.
 
-### `bool placeablecheck(twoarray room, twoarray map, coordinate coord)`
+### `bool placeablecheck(twoarray& room, twoarray map&, coordinate coord)`
 
 Validates whether a room can be legally placed at a specific coordinate on the map.
 
