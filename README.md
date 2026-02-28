@@ -63,8 +63,8 @@ A 2D array abstraction built on top of a 1D `std::vector<int>`. Used for both in
 
 
 * **Methods:**
-* **`int get(coordinate coord)`**: Retrieves the tile value at a specific coordinate. **Returns `-1**` if the requested coordinate is out of bounds.
-* **`bool set(coordinate coord, int input)`**: Sets the tile value at a specific coordinate. **Returns `false**` if the coordinate is out of bounds, otherwise returns `true`.
+* **`int get(coordinate coord)`**: Retrieves the tile value at a specific coordinate. Returns `-1` if the requested coordinate is out of bounds.
+* **`bool set(coordinate coord, int input)`**: Sets the tile value at a specific coordinate. Returns `false` if the coordinate is out of bounds, otherwise returns `true`.
 
 
 
