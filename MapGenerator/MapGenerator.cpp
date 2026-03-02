@@ -97,6 +97,7 @@ void place(twoarray& room, twoarray& map, coordinate coord) {
 
 bool placeablecheck(twoarray& room, twoarray& map, coordinate& coord) {
     unsigned __int8 correctdoorcounter = 0;
+    unsigned __int8 falsedoorcounter = 0;
 
     for (unsigned __int8 x = 0; x < room.size; x++) {
         for (unsigned __int8 y = 0; y < room.size; y++) {
@@ -112,16 +113,36 @@ bool placeablecheck(twoarray& room, twoarray& map, coordinate& coord) {
 
             switch (roomVal) {
             case 2:
-                if (map.get(coordinate(mapX, mapY + 1)) == 4) correctdoorcounter++;
+                if (map.get(coordinate(mapX, mapY + 1)) == 4) {
+                    correctdoorcounter++;
+                }
+                else {
+                    falsedoorcounter++;
+                }
                 break;
             case 3:
-                if (map.get(coordinate(mapX + 1, mapY)) == 5) correctdoorcounter++;
+                if (map.get(coordinate(mapX + 1, mapY)) == 5) {
+                    correctdoorcounter++;
+                }
+                else {
+                    falsedoorcounter++;
+                }
                 break;
             case 4:
-                if (map.get(coordinate(mapX, mapY - 1)) == 2) correctdoorcounter++;
+                if (map.get(coordinate(mapX, mapY - 1)) == 2) {
+                    correctdoorcounter++;
+                }
+                else {
+                    falsedoorcounter++;
+                }
                 break;
             case 5:
-                if (map.get(coordinate(mapX - 1, mapY)) == 3) correctdoorcounter++;
+                if (map.get(coordinate(mapX - 1, mapY)) == 3) {
+                    correctdoorcounter++;
+                }
+                else {
+                    falsedoorcounter++;
+                }
                 break;
             }
 
@@ -134,7 +155,7 @@ bool placeablecheck(twoarray& room, twoarray& map, coordinate& coord) {
     else return false;
 }
 
-void printtwoarray(twoarray room) {
+void printtwoarray(twoarray& room) {
     for (unsigned __int8 x = 0; x < room.size; x++) {
         std::string print = "";
         for (unsigned __int8 y = 0; y < room.size; y++) {
